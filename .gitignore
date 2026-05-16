@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.conda/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Kaggle/outputs
+kaggle_output/
+*.csv
+*.pt
+*.pth
+
+# Training runs and artifacts
+yolo_runs/
+runs/
+
+# OS
+.DS_Store
+Thumbs.db
