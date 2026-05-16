@@ -24,7 +24,7 @@ End-to-end road damage detection using YOLOv8 on the RDD2022 dataset. This repos
 
 ## Training Results 
 
-These curves and diagnostics are from the latest YOLOv8n run in Kaggle:
+These curves and diagnostics are from the latest YOLOv8n run :
 
 ![Results curve](kaggle_output/yolo_runs/rdd2022_yolov8n/results.png)
 ![Precision-Recall curve](kaggle_output/yolo_runs/rdd2022_yolov8n/BoxPR_curve.png)
