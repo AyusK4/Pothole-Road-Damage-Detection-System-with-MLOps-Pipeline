@@ -15,11 +15,8 @@ kaggle_output/yolo_runs/rdd2022_yolov8n/args.yaml
 *.csv
 *.pt
 kaggle_output/yolo_runs/rdd2022_yolov8n*.jpg
-kaggle_output\rdd-training.log
+kaggle_output/yolo_runs/rdd2022_yolov8n/training.log
 
-# Training runs and artifacts
-yolo_runs/
-runs/
 
 # OS
 .DS_Store
