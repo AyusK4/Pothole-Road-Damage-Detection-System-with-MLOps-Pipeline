@@ -33,11 +33,6 @@ These curves and diagnostics are from the latest YOLOv8n run in Kaggle:
 
 ## Outputs
 
-- Model checkpoints: kaggle_output/yolo_runs/rdd2022_yolov8n/weights
-- Metrics: kaggle_output/yolo_runs/rdd2022_yolov8n/results.csv
-- Visuals: kaggle_output/yolo_runs/rdd2022_yolov8n/*.png
+Checkpoints and CSV metrics are kept out of git. Only the PNG curves in kaggle_output are tracked for documentation.
 
-## Notes
 
-- best.pt is the best validation checkpoint; last.pt is the latest checkpoint for resume.
-- If you resume training, keep results.csv and best.pt in the same run folder to preserve best-epoch tracking.

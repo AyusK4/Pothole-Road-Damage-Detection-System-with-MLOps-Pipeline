@@ -9,7 +9,8 @@ __pycache__/
 .ipynb_checkpoints/
 
 # Kaggle/outputs
-kaggle_output/
+kaggle_output/**
+!kaggle_output/**/*.png
 *.csv
 *.pt
 *.pth
