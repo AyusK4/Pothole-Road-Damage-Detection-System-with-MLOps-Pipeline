@@ -9,13 +9,13 @@ __pycache__/
 .ipynb_checkpoints/
 
 # Kaggle/outputs
-kaggle_output/**
-!kaggle_output/
-!kaggle_output/**/
-!kaggle_output/**/*.png
+kaggle_output/runs/
+kaggle_output/yolo_runs/rdd2022_yolov8n/weights
+kaggle_output/yolo_runs/rdd2022_yolov8n/args.yaml
 *.csv
 *.pt
-*.pth
+kaggle_output/yolo_runs/rdd2022_yolov8n*.jpg
+kaggle_output\rdd-training.log
 
 # Training runs and artifacts
 yolo_runs/
