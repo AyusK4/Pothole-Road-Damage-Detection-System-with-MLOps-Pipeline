@@ -15,7 +15,7 @@ kaggle_output/yolo_runs/rdd2022_yolov8n/args.yaml
 *.csv
 *.pt
 kaggle_output/**/*.jpg
-kaggle_output/**/training.log
+kaggle_output/**/*.log
 
 
 # OS
