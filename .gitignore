@@ -5,6 +5,9 @@ __pycache__/
 .venv/
 .conda/
 
+inference_test (1).png
+inference_test (2).png
+
 # Jupyter
 .ipynb_checkpoints/
 
