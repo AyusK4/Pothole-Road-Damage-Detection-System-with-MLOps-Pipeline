@@ -8,17 +8,22 @@ __pycache__/
 inference_test (1).png
 inference_test (2).png
 
+
 # Jupyter
 .ipynb_checkpoints/
 
 # Kaggle/outputs
-kaggle_output/runs/
-kaggle_output/yolo_runs/rdd2022_yolov8n/weights
-kaggle_output/yolo_runs/rdd2022_yolov8n/args.yaml
+# kaggle_output/runs/
+# kaggle_output/yolo_runs/rdd2022_yolov8n/weights
+# kaggle_output/yolo_runs/rdd2022_yolov8n/args.yaml
+# kaggle_output/**/*.jpg
+# kaggle_output/**/*.log
+nano model/
+
+
 *.csv
 *.pt
-kaggle_output/**/*.jpg
-kaggle_output/**/*.log
+
 
 
 # OS
