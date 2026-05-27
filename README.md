@@ -32,11 +32,11 @@ Road damage detection using YOLOv8 on the RDD2022 dataset. This repository conta
 
 - Training uses the train split; validation metrics are tracked on the val split.
 - Final metrics are computed on the test split with mAP50-95, mAP50, precision, and recall.
-- Checkpoints: best.pt (best validation) and last.pt (latest for resume).
+
 
 ## Metrics
 
-Latest evaluation (Run 4) reports the following values:
+Latest evaluation  reports the following values:
 
 - mAP50-95: 0.32462
 - mAP50: 0.60040
