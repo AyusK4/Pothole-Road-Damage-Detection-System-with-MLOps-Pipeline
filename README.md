@@ -22,14 +22,14 @@ End-to-end road damage detection using YOLOv8 on the RDD2022 dataset. This repos
 - Notebooks/02_train_yolov8.ipynb: YOLOv8 training with checkpoint resume
 - Notebooks/03_evaluate_yolov8.ipynb: evaluation and sample inference
 
-## Training Results 
+## Inference Samples
 
-These curves and diagnostics are from the latest YOLOv8n run :
+Below are side-by-side original vs boxed predictions from the small model runs:
 
-![Results curve](kaggle_output/yolo_runs/rdd2022_yolov8n/results.png)
-![Precision-Recall curve](kaggle_output/yolo_runs/rdd2022_yolov8n/BoxPR_curve.png)
-![F1 curve](kaggle_output/yolo_runs/rdd2022_yolov8n/BoxF1_curve.png)
-![Confusion matrix](kaggle_output/yolo_runs/rdd2022_yolov8n/confusion_matrix.png)
+![Random inference 1](small%20model%20(bigger)/randomimage%20(1).png)
+![Random inference 2](small%20model%20(bigger)/randomimage%20(2).png)
+![Random inference 3](small%20model%20(bigger)/randomimage%20(3).png)
+
 
 
 
