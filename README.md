@@ -9,9 +9,9 @@ A multi-class road damage detection system built on **YOLOv8s**, trained on the 
 | Metric | Value |
 |---|---|
 | mAP@0.5 | **0.600** |
-| mAP@0.5:0.95 | 0.325 |
-| Precision | 0.672 |
-| Recall | 0.556 |
+| mAP@0.5:0.95 | 0.318 |
+| Precision | 0.668 |
+| Recall | 0.552 |
 
 Training was conducted over 190 epochs on a multi-GPU setup using augmentation strategies including mosaic, copy-paste, multi-scale training, and cosine annealing LR scheduling.
 
@@ -132,13 +132,13 @@ print(metrics.box.map50)
 
 ## Per-Class Performance
 
-| Class | AP@0.5 |
-|---|---|
-| Longitudinal Crack | 0.534 |
-| Transverse Crack | 0.518 |
-| Alligator Crack | 0.645 |
-| Other Corruption | 0.768 |
-| Pothole | 0.422 |
+| Class | Precision | Recall | AP@0.5 |
+|---|---|---|---|
+| Longitudinal Crack | 0.645 | 0.524 | 0.568 |
+| Transverse Crack | 0.591 | 0.549 | 0.562 |
+| Alligator Crack | 0.700 | 0.570 | 0.641 |
+| Other Corruption | 0.713 | 0.719 | 0.749 |
+| Pothole | 0.693 | 0.396 | 0.479 |
 
 ---
 
