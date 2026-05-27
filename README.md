@@ -1,10 +1,10 @@
 # Pothole and Road Damage Detection System (YOLOv8)
 
-End-to-end road damage detection using YOLOv8 on the RDD2022 dataset. This repository includes data prep, training, evaluation, and inference notebooks.
+Road damage detection using YOLOv8 on the RDD2022 dataset. This repository contains notebooks for data preparation, training, evaluation, and inference.
 
 ## Model
 
-- Primary model: YOLOv8s (with additional runs using YOLOv8n for faster baselines)
+- Primary model: YOLOv8s (with YOLOv8n used for lightweight baselines)
 - Task: multi-class object detection
 - Labels: YOLO txt format
 ## Dataset
@@ -34,14 +34,14 @@ End-to-end road damage detection using YOLOv8 on the RDD2022 dataset. This repos
 - Final metrics are computed on the test split with mAP50-95, mAP50, precision, and recall.
 - Checkpoints: best.pt (best validation) and last.pt (latest for resume).
 
-## Best Metrics (Run 4)
+## Metrics
 
-Based on [small model/4th run/results.csv](small%20model/4th%20run/results.csv) (epochs 154-190):
+Latest evaluation (Run 4) reports the following values:
 
--  mAP50-95: 0.32462 
--  mAP50: 0.60040 
--  precision: 0.67151 
--  recall: 0.55619 
+- mAP50-95: 0.32462
+- mAP50: 0.60040
+- Precision: 0.67151
+- Recall: 0.55619
 
 
 
@@ -49,9 +49,9 @@ Based on [small model/4th run/results.csv](small%20model/4th%20run/results.csv) 
 
 Below are side-by-side original vs boxed predictions from the small model runs:
 
-![Random inference 1](small%20model%20(bigger)/randomimage%20(1).png)
-![Random inference 2](small%20model%20(bigger)/randomimage%20(2).png)
-![Random inference 3](small%20model%20(bigger)/randomimage%20(3).png)
+![Random inference 1](small%20model/randomimage%20(1).png)
+![Random inference 2](small%20model/randomimage%20(2).png)
+![Random inference 3](small%20model/randomimage%20(3).png)
 
 
 

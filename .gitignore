@@ -11,7 +11,7 @@ __pycache__/
 
 
 nano model/
-small model/
+
 
 *.csv
 *.pt
