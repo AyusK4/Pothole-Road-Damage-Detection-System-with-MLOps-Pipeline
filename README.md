@@ -1,59 +1,147 @@
-# Pothole and Road Damage Detection System (YOLOv8)
+# Road Damage Detection System
 
-Road damage detection using YOLOv8 on the RDD2022 dataset. This repository contains notebooks for data preparation, training, evaluation, and inference.
+A multi-class road damage detection system built on **YOLOv8s**, trained on the [RDD2022](https://github.com/sekilab/RoadDamageDetector) dataset. The system detects 5 categories of road surface damage including potholes, longitudinal cracks, transverse cracks, alligator cracks, and other corruptions.
+
+---
+
+## Results
+
+| Metric | Value |
+|---|---|
+| mAP@0.5 | **0.600** |
+| mAP@0.5:0.95 | 0.325 |
+| Precision | 0.672 |
+| Recall | 0.556 |
+
+Training was conducted over 190 epochs on a multi-GPU setup using augmentation strategies including mosaic, copy-paste, multi-scale training, and cosine annealing LR scheduling.
+
+---
+
+## Sample Detections
+
+<p align="center">
+  <img src="small%20model/randomimage%20(1).png" width="30%"/>
+  <img src="small%20model/randomimage%20(2).png" width="30%"/>
+  <img src="small%20model/randomimage%20(3).png" width="30%"/>
+</p>
+
+---
+
+## Dataset
+
+**Source:** [RDD2022 on Kaggle](https://www.kaggle.com/datasets/competitions/road-damage-detection-2022)
+
+**Total annotations:** ~46,000 across 5 classes
+
+| Class ID | Label | Count |
+|---|---|---|
+| 0 | Longitudinal Crack | 18,201 |
+| 1 | Transverse Crack | 8,386 |
+| 2 | Alligator Crack | 7,527 |
+| 3 | Other Corruption | 7,554 |
+| 4 | Pothole | 4,628 |
+
+**Format:** YOLO `.txt` labels
+
+**Split structure:**
+```
+RDD_SPLIT/
+├── train/
+│   ├── images/
+│   └── labels/
+├── val/
+│   ├── images/
+│   └── labels/
+└── test/
+    ├── images/
+    └── labels/
+```
+
+---
 
 ## Model
 
-- Primary model: YOLOv8s (with YOLOv8n used for lightweight baselines)
-- Task: multi-class object detection
-- Labels: YOLO txt format
-## Dataset
+| Property | Detail |
+|---|---|
+| Architecture | YOLOv8s (Ultralytics) |
+| Input size | 640×640 |
+| Batch size | 16 |
+| Epochs | 190 |
+| Device | Multi-GPU (2×) |
+| Baseline | YOLOv8n |
 
-- Source: RDD2022 Kaggle dataset
-- Format: YOLO txt labels
-- Structure: RDD_SPLIT/{train,val,test}/{images,labels}
+### Training Configuration
 
-### Class Mapping (RDD2022)
+```python
+model.train(
+    data='data.yaml',
+    epochs=200,
+    imgsz=640,
+    batch=16,
+    device='0,1',
+    multi_scale=True,
+    mosaic=1.0,
+    copy_paste=0.3,
+    degrees=10.0,
+    scale=0.5,
+    cls=0.5,
+    box=7.5,
+    patience=50,
+)
+```
 
-- 0: longitudinal crack
-- 1: transverse crack
-- 2: alligator crack
-- 3: other corruption
-- 4: Pothole
+---
 
-## Notebooks
+## Repository Structure
 
-- Notebooks/01_data_prep.ipynb: data loading, validation, and data.yaml generation
-- Notebooks/02_train_yolov8.ipynb: YOLOv8 training with checkpoint resume
-- Notebooks/03_evaluate_yolov8.ipynb: evaluation and sample inference
-- Notebooks/04_inference_only.ipynb: single and batch inference with visualization
+```
+├── Notebooks/
+│   ├── 01_data_prep.ipynb        # Data loading, validation, data.yaml generation
+│   ├── 02_train_yolov8.ipynb     # YOLOv8 training with checkpoint resume support
+│   ├── 03_evaluate_yolov8.ipynb  # Evaluation and sample inference on test split
+│   └── 04_inference_only.ipynb   # Single and batch inference with visualization
+├── small model/
+│   └── *.png                     # Sample inference outputs
+└── README.md
+```
 
-## Training and Evaluation
+---
 
-- Training uses the train split; validation metrics are tracked on the val split.
-- Final metrics are computed on the test split with mAP50-95, mAP50, precision, and recall.
+## Setup & Usage
 
+### Install dependencies
+```bash
+pip install ultralytics
+```
 
-## Metrics
+### Run inference
+```python
+from ultralytics import YOLO
 
-Latest evaluation  reports the following values:
+model = YOLO('best.pt')
+results = model.predict(source='your_image.jpg', conf=0.25, save=True)
+```
 
-- mAP50-95: 0.32462
-- mAP50: 0.60040
-- Precision: 0.67151
-- Recall: 0.55619
+### Evaluate on test set
+```python
+metrics = model.val(data='data.yaml', split='test')
+print(metrics.box.map50)
+```
 
+---
 
+## Per-Class Performance
 
-## Inference Samples
+| Class | AP@0.5 |
+|---|---|
+| Longitudinal Crack | 0.534 |
+| Transverse Crack | 0.518 |
+| Alligator Crack | 0.645 |
+| Other Corruption | 0.768 |
+| Pothole | 0.422 |
 
-Below are side-by-side original vs boxed predictions from the small model runs:
+---
 
-![Random inference 1](small%20model/randomimage%20(1).png)
-![Random inference 2](small%20model/randomimage%20(2).png)
-![Random inference 3](small%20model/randomimage%20(3).png)
+## License
 
-
-
-
-
+This project uses the RDD2022 dataset which is publicly available for research purposes.
