@@ -3,10 +3,28 @@ import io
 from pathlib import Path
 
 import numpy as np
+import torch
 from fastapi import FastAPI, File, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from PIL import Image
+
+
+_original_torch_load = torch.load
+
+
+def _torch_load_with_weights_only_disabled(*args, **kwargs):
+    kwargs.setdefault("weights_only", False)
+    return _original_torch_load(*args, **kwargs)
+
+
+torch.load = _torch_load_with_weights_only_disabled
+
 from ultralytics import YOLO
+import ultralytics.utils.loss as ultralytics_loss
+
+
+if not hasattr(ultralytics_loss, "DFLoss") and hasattr(ultralytics_loss, "BboxLoss"):
+    ultralytics_loss.DFLoss = ultralytics_loss.BboxLoss
 
 
 MODEL_PATH = Path(__file__).resolve().parents[1] / "Best.pt"
@@ -20,7 +38,15 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-model = YOLO(str(MODEL_PATH))
+
+def load_model() -> YOLO:
+    if not MODEL_PATH.exists():
+        raise FileNotFoundError(f"Model checkpoint not found: {MODEL_PATH}")
+
+    return YOLO(str(MODEL_PATH))
+
+
+model = load_model()
 
 
 def encode_image_to_base64(img: Image.Image) -> str:
